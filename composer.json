@@ -1,0 +1,40 @@
+{
+    "name": "jhoule/mailshake",
+    "description": "Connect your Laravel application to Mailshake.",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "Laravel",
+        "Mailshake",
+        "Mailshake API"
+    ],
+    "authors": [
+        {
+            "name": "Jason Houle",
+            "email": "jason@jasonhoule.dev"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*",
+        ""
+    },
+    "autoload": {
+        "psr-4": {
+            "Jhoule\\Mailshake\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jhoule\\Mailshake\\MailshakeServiceProvider"
+            ],
+            "aliases": {
+                "Mailshake": "Jhoule\\Mailshake\\Facades\\Mailshake"
+            },
+            "branch-alias": {
+                "dev-master": "1.0.dev"
+            }
+        }
+    }
+}
