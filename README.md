@@ -4,5 +4,4 @@ A package for communicating with the [Mailshake](https://mailshake.com/) API. Cr
 
 ## Documentation
 
-* Installation
-* 
+* [Installation](https://github.com/jasonhoule/laravel-mailshake/wiki/Installation)
