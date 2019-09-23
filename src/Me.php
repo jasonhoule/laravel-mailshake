@@ -2,7 +2,7 @@
 
 namespace Jhoule\Mailshake;
 
-use Jhoule\Mailshake\MailshakeRequest;
+use Jhoule\Mailshake\Requests\MailshakeRequest;
 use Jhoule\Mailshake\Models\User;
 
 class Me extends MailshakeRequest
