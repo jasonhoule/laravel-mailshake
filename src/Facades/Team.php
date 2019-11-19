@@ -8,27 +8,27 @@ use Jhoule\Mailshake\Requests\Team\ListMembers;
 
 class Team extends Facade
 {
-
     /**
      * Lists the users belonging to this team.
      *
-     * @param string|null $search Filters the returned users.
+     * @param string|null $search    Filters the returned users.
      * @param string|null $nextToken Fetches the next page from a previous request.
-     * @param int $perPage How many results to get at once, up to 100.
-     * @return Collection
+     * @param int         $perPage   How many results to get at once, up to 100.
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
      * @throws \Jhoule\Mailshake\Errors\NotFound
+     *
+     * @return Collection
      */
     public static function listMembers(
         string $search = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection
-    {
+    ) : Collection {
         $request = new ListMembers();
+
         return $request->get($search, $nextToken, $perPage);
     }
-
 }

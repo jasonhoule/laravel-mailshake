@@ -2,12 +2,11 @@
 
 namespace Jhoule\Mailshake;
 
-use Jhoule\Mailshake\Requests\MailshakeRequest;
 use Jhoule\Mailshake\Models\User;
+use Jhoule\Mailshake\Requests\MailshakeRequest;
 
 class Me extends MailshakeRequest
 {
-
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.me');
@@ -15,7 +14,7 @@ class Me extends MailshakeRequest
     }
 
     /**
-     * Calls the Mailshake API to return the user for the given API key
+     * Calls the Mailshake API to return the user for the given API key.
      *
      * @return User
      */
@@ -24,14 +23,14 @@ class Me extends MailshakeRequest
         $response = $this->sendRequest()->user;
 
         $user = new User([
-            'id' => $response->id,
-            'teamID' => $response->teamID,
-            'teamName' => $response->teamName,
+            'id'              => $response->id,
+            'teamID'          => $response->teamID,
+            'teamName'        => $response->teamName,
             'teamBlockedDate' => $response->teamBlockedDate,
-            'emailAddress' => $response->emailAddress,
-            'isTeamAdmin' => $response->isTeamAdmin,
-            'isDisabled' => $response->isDisabled,
-            'fullName' => $response->fullName,
+            'emailAddress'    => $response->emailAddress,
+            'isTeamAdmin'     => $response->isTeamAdmin,
+            'isDisabled'      => $response->isDisabled,
+            'fullName'        => $response->fullName,
         ]);
 
         return $user;

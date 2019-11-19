@@ -4,7 +4,6 @@ namespace Jhoule\Mailshake\Filters;
 
 class RecipientFilterActions
 {
-
     /*
      * Recipients who have opened a message.
      */

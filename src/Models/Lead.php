@@ -4,7 +4,6 @@ namespace Jhoule\Mailshake\Models;
 
 class Lead extends MailshakeModel
 {
-
     public $id;
     public $created;
     public $openDate;
@@ -13,5 +12,4 @@ class Lead extends MailshakeModel
     public $campaign;
     public $status;
     public $assignedTo;
-
 }

@@ -8,23 +8,24 @@ use Jhoule\Mailshake\Requests\Senders\SendersList;
 
 class Senders extends Facade
 {
-
     /**
      * List all of a team’s senders.
      *
-     * @param string|null $search Filters what senders are returned.
+     * @param string|null $search    Filters what senders are returned.
      * @param string|null $nextToken Fetches the next page from a previous request.
-     * @param int $perPage How many results to get at once, up to 100.
-     * @return Collection
+     * @param int         $perPage   How many results to get at once, up to 100.
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
      * @throws \Jhoule\Mailshake\Errors\NotFound
+     *
+     * @return Collection
      */
     public static function list(string $search = null, string $nextToken = null, int $perPage = 100) : Collection
     {
         $request = new SendersList();
+
         return $request->get($search, $nextToken, $perPage);
     }
-
 }

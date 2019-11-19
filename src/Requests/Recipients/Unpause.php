@@ -7,7 +7,6 @@ use Jhoule\Mailshake\Requests\MailshakeRequest;
 
 class Unpause extends MailshakeRequest
 {
-
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.recipients.unpause');
@@ -22,30 +21,31 @@ class Unpause extends MailshakeRequest
      *
      * A not_found error will be returned if the recipient could not be found or is not paused.
      *
-     * @param int $campaignID The campaign to unpause.
+     * @param int    $campaignID   The campaign to unpause.
      * @param string $emailAddress The address of the recipient.
-     * @return Recipient
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return Recipient
      */
     public function get(int $campaignID, string $emailAddress) : Recipient
     {
         $response = $this->sendRequest([
-            'campaignID' => $campaignID,
-            'emailAddress' => $emailAddress
+            'campaignID'   => $campaignID,
+            'emailAddress' => $emailAddress,
         ]);
 
         return new Recipient([
-            'id' => $response->id,
+            'id'           => $response->id,
             'emailAddress' => $response->emailAddress,
-            'fullName' => $response->fullName,
-            'isPaused' => $response->isPaused,
-            'first' => $response->first,
-            'last' => $response->last,
-            'fields' => $response->fields,
+            'fullName'     => $response->fullName,
+            'isPaused'     => $response->isPaused,
+            'first'        => $response->first,
+            'last'         => $response->last,
+            'fields'       => $response->fields,
         ]);
     }
-
 }

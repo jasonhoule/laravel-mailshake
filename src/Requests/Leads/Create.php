@@ -23,34 +23,34 @@ class Create extends MailshakeRequest
      * addresses instead. If a recipient was already a lead and was won,
      * this will reopen them as a lead.
      *
-     * @param int|null $campaignID
+     * @param int|null   $campaignID
      * @param array|null $emailAddresses
-     * @param int|null $recipientIDs
-     * @return CreatedLeads
+     * @param int|null   $recipientIDs
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
      * @throws \Jhoule\Mailshake\Errors\NotFound
+     *
+     * @return CreatedLeads
      */
     public function get(
         int $campaignID = null,
         array $emailAddresses = null,
         int $recipientIDs = null
-    ) : CreatedLeads
-    {
+    ) : CreatedLeads {
         $response = $this->sendRequest([
-            'campaignID' => $campaignID,
+            'campaignID'     => $campaignID,
             'emailAddresses' => $emailAddresses,
-            'recipientIDs' => $recipientIDs,
+            'recipientIDs'   => $recipientIDs,
         ]);
 
         return new CreatedLeads([
-            'leads' => $this->transformLeads($response->leads),
-            'emailsNotFound' => $response->emailsNotFound,
+            'leads'                => $this->transformLeads($response->leads),
+            'emailsNotFound'       => $response->emailsNotFound,
             'recipientIDsNotFound' => $response->recipientIDsNotFound,
-            'invalidEmails' => $response->invalidEmails,
-            'isEmpty' => $response->isEmpty
+            'invalidEmails'        => $response->invalidEmails,
+            'isEmpty'              => $response->isEmpty,
         ]);
     }
-
 }

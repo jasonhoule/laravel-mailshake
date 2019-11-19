@@ -4,7 +4,6 @@ namespace Jhoule\Mailshake\Filters;
 
 class RecipientFilterOptions
 {
-
     public $action;
     public $negateAction;
     public $campaignMessageID;
@@ -19,9 +18,9 @@ class RecipientFilterOptions
     public function getOptions() : array
     {
         return [
-            'action' => $this->action,
-            'negateAction' => $this->negateAction,
-            'campaignMessageID' => $this->campaignMessageID
+            'action'            => $this->action,
+            'negateAction'      => $this->negateAction,
+            'campaignMessageID' => $this->campaignMessageID,
         ];
     }
 }

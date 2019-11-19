@@ -18,7 +18,6 @@ use Jhoule\Mailshake\Requests\Recipients\Unsubscribe;
 
 class Recipients extends Facade
 {
-
     /**
      * Adds new recipients to a campaign. Each campaign can hold up to 5,000 recipients.
      *
@@ -30,17 +29,19 @@ class Recipients extends Facade
      * within your campaign. If a text replacement isn’t found, that recipient’s emails
      * will not be scheduled until you make corrections.
      *
-     * @param int $campaignID The campaign to add these recipients to.
-     * @param bool $addAsNewList Pass true to keep these recipients grouped together.
-     * @param bool $truncateExtraFields Mailshake limits you to 30 recipient fields. If true then truncate.
-     * @param string|null $listOfEmails A comma or newline separated list of email addresses to add.
-     * @param array|null $addresses A structured list of recipient data that can include custom fields.
-     * @param array|null $csvData A structured object representing a spreadsheet of comma-separated recipient data.
-     * @return AddRecipientRequest
+     * @param int         $campaignID          The campaign to add these recipients to.
+     * @param bool        $addAsNewList        Pass true to keep these recipients grouped together.
+     * @param bool        $truncateExtraFields Mailshake limits you to 30 recipient fields. If true then truncate.
+     * @param string|null $listOfEmails        A comma or newline separated list of email addresses to add.
+     * @param array|null  $addresses           A structured list of recipient data that can include custom fields.
+     * @param array|null  $csvData             A structured object representing a spreadsheet of comma-separated recipient data.
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return AddRecipientRequest
      */
     public static function add(
         int $campaignID,
@@ -51,6 +52,7 @@ class Recipients extends Facade
         array $csvData = null) : AddRecipientRequest
     {
         $request = new Add();
+
         return $request->get($campaignID, $addAsNewList, $truncateExtraFields, $listOfEmails, $addresses, $csvData);
     }
 
@@ -60,15 +62,18 @@ class Recipients extends Facade
      * field will let you determine the exact success or failure of the import.
      *
      * @param int $statusID
-     * @return AddedRecipients
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return AddedRecipients
      */
     public static function addStatus(int $statusID) : AddedRecipients
     {
         $request = new AddStatus();
+
         return $request->get($statusID);
     }
 
@@ -76,18 +81,21 @@ class Recipients extends Facade
      * Gets a single recipient’s basic information. A not_found error will be
      * returned if the recipient could not be found.
      *
-     * @param int|null $recipientID The ID of a recipient.
-     * @param int|null $campaignID The campaign that this recipient belongs to. Required if emailAddress is specified.
+     * @param int|null    $recipientID  The ID of a recipient.
+     * @param int|null    $campaignID   The campaign that this recipient belongs to. Required if emailAddress is specified.
      * @param string|null $emailAddress The address of the recipient.
-     * @return Recipient
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return Recipient
      */
     public static function get(int $recipientID = null, int $campaignID = null, string $emailAddress = null) : Recipient
     {
         $request = new Get();
+
         return $request->get($recipientID, $campaignID, $emailAddress);
     }
 
@@ -97,16 +105,18 @@ class Recipients extends Facade
      * of kind of problem (like a missing text replacement or an email that
      * failed to send).
      *
-     * @param int $campaignID The campaign to look in.
-     * @param RecipientFilterOptions|null $filter Criteria to filter recipients with.
-     * @param string|null $search Filters what recipients are returned.
-     * @param string|null $nextToken Fetches the next page from a previous request.
-     * @param int|null $perPage How many results to get at once, up to 100.
-     * @return Collection
+     * @param int                         $campaignID The campaign to look in.
+     * @param RecipientFilterOptions|null $filter     Criteria to filter recipients with.
+     * @param string|null                 $search     Filters what recipients are returned.
+     * @param string|null                 $nextToken  Fetches the next page from a previous request.
+     * @param int|null                    $perPage    How many results to get at once, up to 100.
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return Collection
      */
     public static function list(
         int $campaignID,
@@ -116,6 +126,7 @@ class Recipients extends Facade
         int $perPage = null) : Collection
     {
         $request = new RecipientsList();
+
         return $request->get($campaignID, $filter, $search, $nextToken, $perPage);
     }
 
@@ -125,17 +136,20 @@ class Recipients extends Facade
      *
      * A not_found error will be returned if the recipient could not be found.
      *
-     * @param int $campaignID The campaign that this recipient belongs to.
+     * @param int    $campaignID   The campaign that this recipient belongs to.
      * @param string $emailAddress The address of the recipient.
-     * @return Recipient
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return Recipient
      */
     public static function pause(int $campaignID, string $emailAddress) : Recipient
     {
         $request = new Pause();
+
         return $request->get($campaignID, $emailAddress);
     }
 
@@ -146,17 +160,20 @@ class Recipients extends Facade
      *
      * A not_found error will be returned if the recipient could not be found or is not paused.
      *
-     * @param int $campaignID The campaign to unpause.
+     * @param int    $campaignID   The campaign to unpause.
      * @param string $emailAddress The address of the recipient.
-     * @return Recipient
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return Recipient
      */
     public static function unpause(int $campaignID, string $emailAddress) : Recipient
     {
         $request = new Unpause();
+
         return $request->get($campaignID, $emailAddress);
     }
 
@@ -164,15 +181,18 @@ class Recipients extends Facade
      * Adds a list of email addresses to your unsubscribe list.
      *
      * @param array $emailAddresses A comma-separated list of email addresses to unsubscribe.
-     * @return bool Returns true if successful
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return bool Returns true if successful
      */
     public static function unsubscribe(array $emailAddresses) : bool
     {
         $request = new Unsubscribe();
+
         return $request->get($emailAddresses);
     }
 }

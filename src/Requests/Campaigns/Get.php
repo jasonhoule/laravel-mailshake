@@ -2,8 +2,8 @@
 
 namespace Jhoule\Mailshake\Requests\Campaigns;
 
-use Jhoule\Mailshake\Requests\MailshakeRequest;
 use Jhoule\Mailshake\Models\Campaign;
+use Jhoule\Mailshake\Requests\MailshakeRequest;
 use Jhoule\Mailshake\Traits\TransformsMessages;
 use Jhoule\Mailshake\Traits\TransformsSender;
 
@@ -23,25 +23,26 @@ class Get extends MailshakeRequest
      * error will be returned if the campaign could not be found.
      *
      * @param int $campaignID
-     * @return Campaign
+     *
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
      * @throws \Jhoule\Mailshake\Errors\NotFound
+     *
+     * @return Campaign
      */
     public function get(int $campaignID) : Campaign
     {
         $response = $this->sendRequest(['campaignID' => $campaignID]);
 
         return new Campaign([
-            'id' => $response->id,
-            'title' => $response->title,
-            'created' => $response->created,
+            'id'       => $response->id,
+            'title'    => $response->title,
+            'created'  => $response->created,
             'archived' => $response->archived,
             'isPaused' => $response->isPaused,
             'messages' => $this->transformMessages($response->messages),
-            'sender' => $this->transformSender($response->sender),
-            'url' => $response->url,
+            'sender'   => $this->transformSender($response->sender),
+            'url'      => $response->url,
         ]);
     }
-
 }

@@ -7,7 +7,6 @@ use Jhoule\Mailshake\Requests\MailshakeRequest;
 
 class Add extends MailshakeRequest
 {
-
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.recipients.add');
@@ -26,17 +25,19 @@ class Add extends MailshakeRequest
      * within your campaign. If a text replacement isn’t found, that recipient’s emails
      * will not be scheduled until you make corrections.
      *
-     * @param int $campaignID The campaign to add these recipients to.
-     * @param bool $addAsNewList Pass true to keep these recipients grouped together.
-     * @param bool $truncateExtraFields Mailshake limits you to 30 recipient fields. If true then truncate.
-     * @param string|null $listOfEmails A comma or newline separated list of email addresses to add.
-     * @param array|null $addresses A structured list of recipient data that can include custom fields.
-     * @param array|null $csvData A structured object representing a spreadsheet of comma-separated recipient data.
-     * @return AddRecipientRequest
+     * @param int         $campaignID          The campaign to add these recipients to.
+     * @param bool        $addAsNewList        Pass true to keep these recipients grouped together.
+     * @param bool        $truncateExtraFields Mailshake limits you to 30 recipient fields. If true then truncate.
+     * @param string|null $listOfEmails        A comma or newline separated list of email addresses to add.
+     * @param array|null  $addresses           A structured list of recipient data that can include custom fields.
+     * @param array|null  $csvData             A structured object representing a spreadsheet of comma-separated recipient data.
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return AddRecipientRequest
      */
     public function get(
         int $campaignID,
@@ -47,20 +48,19 @@ class Add extends MailshakeRequest
         array $csvData = null) : AddRecipientRequest
     {
         $response = $this->sendRequest([
-            'campaignID' => $campaignID,
-            'addAsNewList' => $addAsNewList,
+            'campaignID'          => $campaignID,
+            'addAsNewList'        => $addAsNewList,
             'truncateExtraFields' => $truncateExtraFields,
-            'listOfEmails' => $listOfEmails,
-            'addresses' => $addresses,
-            'csvData' => $csvData,
+            'listOfEmails'        => $listOfEmails,
+            'addresses'           => $addresses,
+            'csvData'             => $csvData,
         ]);
 
         return new AddRecipientRequest([
-            'invalidEmails' => $response->invalidEmails,
-            'isEmpty' => $response->isEmpty,
+            'invalidEmails'   => $response->invalidEmails,
+            'isEmpty'         => $response->isEmpty,
             'addingToBatchID' => $response->addingToBatchID,
-            'checkStatusID' => $response->checkStatusID,
+            'checkStatusID'   => $response->checkStatusID,
         ]);
     }
-
 }

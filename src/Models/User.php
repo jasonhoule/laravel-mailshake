@@ -4,7 +4,6 @@ namespace Jhoule\Mailshake\Models;
 
 class User extends MailshakeModel
 {
-
     public $id;
     public $teamID;
     public $teamName;
@@ -15,5 +14,4 @@ class User extends MailshakeModel
     public $first;
     public $last;
     public $teamBlockedDate;
-
 }

@@ -6,10 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 class Mailshake extends Facade
 {
-
     public static function me()
     {
-
     }
-
 }

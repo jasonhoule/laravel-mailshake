@@ -7,7 +7,6 @@ use Jhoule\Mailshake\Requests\MailshakeRequest;
 
 class Export extends MailshakeRequest
 {
-
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.campaign.export');
@@ -19,24 +18,26 @@ class Export extends MailshakeRequest
      * Asynchronously starts an export of one or more campaigns to CSV format.
      * All campaign data will be included in a single csv file you can download.
      *
-     * @param int $campaignID
-     * @param string $exportType
+     * @param int         $campaignID
+     * @param string      $exportType
      * @param string|null $timezone
-     * @return CampaignExportRequest
+     *
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
      * @throws \Jhoule\Mailshake\Errors\NotFound
+     *
+     * @return CampaignExportRequest
      */
     public function get(int $campaignID, string $exportType, string $timezone = null) : CampaignExportRequest
     {
         $response = $this->sendRequest([
             'campaignID' => $campaignID,
             'exportType' => $exportType,
-            'timezone' => $timezone
+            'timezone'   => $timezone,
         ]);
 
         return new CampaignExportRequest([
-            'isEmpty' => $response->isEmpty,
+            'isEmpty'       => $response->isEmpty,
             'checkStatusID' => $response->checkStatusID,
         ]);
     }

@@ -6,7 +6,6 @@ use Jhoule\Mailshake\Requests\MailshakeRequest;
 
 class Unpause extends MailshakeRequest
 {
-
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.campaign.unpause');
@@ -19,10 +18,12 @@ class Unpause extends MailshakeRequest
      * take up to 5 minutes for the calendar to show scheduled times for this campaign.
      *
      * @param int $campaignID
-     * @return bool
+     *
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
      * @throws \Jhoule\Mailshake\Errors\NotFound
+     *
+     * @return bool
      */
     public function get(int $campaignID) : bool
     {

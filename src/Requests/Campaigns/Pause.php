@@ -6,7 +6,6 @@ use Jhoule\Mailshake\Requests\MailshakeRequest;
 
 class Pause extends MailshakeRequest
 {
-
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.campaign.pause');
@@ -18,10 +17,12 @@ class Pause extends MailshakeRequest
      * is currently being sent they will not be stopped.
      *
      * @param int $campaignID
-     * @return bool
+     *
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
      * @throws \Jhoule\Mailshake\Errors\NotFound
+     *
+     * @return bool
      */
     public function get(int $campaignID) : bool
     {

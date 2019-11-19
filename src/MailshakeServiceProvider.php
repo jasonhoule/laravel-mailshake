@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class MailshakeServiceProvider extends ServiceProvider
 {
-
     public function boot()
     {
         $this->publishes([
@@ -19,5 +18,4 @@ class MailshakeServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/mailshake.php', 'mailshake');
         $this->mergeConfigFrom(__DIR__.'/../config/endpoints.php', 'mailshake.endpoints');
     }
-
 }
