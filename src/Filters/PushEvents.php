@@ -4,7 +4,6 @@ namespace Jhoule\Mailshake\Filters;
 
 class PushEvents
 {
-
     /*
      * Someone clicked a link.
      */
@@ -34,5 +33,4 @@ class PushEvents
      * A lead’s status was changed.
      */
     public const LEAD_STATUS_CHANGED = 'LeadStatusChanged';
-
 }

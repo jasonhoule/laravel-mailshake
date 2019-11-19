@@ -20,17 +20,19 @@ class Opens extends MailshakeRequest
     /**
      * Obtains the most recent emails opened.
      *
-     * @param int|null $campaignID Restrict to a single campaign.
-     * @param int|null $campaignMessageID Restrict to a single message within a campaign.
-     * @param bool $excludeDuplicates If true this will only not return data when recipients open the same email more than once.
+     * @param int|null    $campaignID            Restrict to a single campaign.
+     * @param int|null    $campaignMessageID     Restrict to a single message within a campaign.
+     * @param bool        $excludeDuplicates     If true this will only not return data when recipients open the same email more than once.
      * @param string|null $recipientEmailAddress Limit to specific recipients.
-     * @param string|null $nextToken Fetches the next page from a previous request.
-     * @param int $perPage How many results to get at once, up to 100.
-     * @return Collection
+     * @param string|null $nextToken             Fetches the next page from a previous request.
+     * @param int         $perPage               How many results to get at once, up to 100.
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return Collection
      */
     public function get(
         int $campaignID = null,
@@ -39,21 +41,19 @@ class Opens extends MailshakeRequest
         string $recipientEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection
-    {
+    ) : Collection {
         $response = $this->sendRequest([
-            'campaignID' => $campaignID,
-            'campaignMessageID' => $campaignMessageID,
-            'excludeDuplicates' => $excludeDuplicates,
+            'campaignID'            => $campaignID,
+            'campaignMessageID'     => $campaignMessageID,
+            'excludeDuplicates'     => $excludeDuplicates,
             'recipientEmailAddress' => $recipientEmailAddress,
-            'nextToken' => $nextToken,
-            'perPage' => $perPage
+            'nextToken'             => $nextToken,
+            'perPage'               => $perPage,
         ]);
 
         return collect([
             'nextToken' => $response->nextToken,
-            'opens' => $this->transformOpens($response->results),
+            'opens'     => $this->transformOpens($response->results),
         ]);
     }
-
 }

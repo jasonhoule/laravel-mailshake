@@ -22,18 +22,20 @@ class Sent extends MailshakeRequest
      * look at campaign-based emails, but this endpoint also lets you get one-off
      * replies you’ve sent within Mailshake via Lead Catcher.
      *
-     * @param string|null $messageType If specified, you can filter to only one-off or campaign messages.
-     * @param string|null $campaignMessageType Filter to a specific type of message within a campaign (see MessageType)
-     * @param int|null $campaignID Restrict to a single campaign.
-     * @param int|null $campaignMessageID Restrict to a single message within a campaign.
+     * @param string|null $messageType           If specified, you can filter to only one-off or campaign messages.
+     * @param string|null $campaignMessageType   Filter to a specific type of message within a campaign (see MessageType)
+     * @param int|null    $campaignID            Restrict to a single campaign.
+     * @param int|null    $campaignMessageID     Restrict to a single message within a campaign.
      * @param string|null $recipientEmailAddress Limit to specific recipients.
-     * @param string|null $nextToken Fetches the next page from a previous request.
-     * @param int $perPage How many results to get at once, up to 100.
-     * @return Collection
+     * @param string|null $nextToken             Fetches the next page from a previous request.
+     * @param int         $perPage               How many results to get at once, up to 100.
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return Collection
      */
     public function get(
         string $messageType = null,
@@ -43,20 +45,19 @@ class Sent extends MailshakeRequest
         string $recipientEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection
-    {
+    ) : Collection {
         $response = $this->sendRequest([
-            'messageType' => $messageType,
-            'campaignMessageType' => $campaignMessageType,
-            'campaignID' => $campaignID,
-            'campaignMessageID' => $campaignMessageID,
+            'messageType'           => $messageType,
+            'campaignMessageType'   => $campaignMessageType,
+            'campaignID'            => $campaignID,
+            'campaignMessageID'     => $campaignMessageID,
             'recipientEmailAddress' => $recipientEmailAddress,
-            'nextToken' => $nextToken,
-            'perPage' => $perPage
+            'nextToken'             => $nextToken,
+            'perPage'               => $perPage,
         ]);
 
         return collect([
-            'nextToken' => $response->nextToken,
+            'nextToken'    => $response->nextToken,
             'sentMessages' => $this->transformSentMessages($response->results),
         ]);
     }

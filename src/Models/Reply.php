@@ -4,7 +4,6 @@ namespace Jhoule\Mailshake\Models;
 
 class Reply extends MailshakeModel
 {
-
     public $id;
     public $actionDate;
     public $recipient;
@@ -18,5 +17,4 @@ class Reply extends MailshakeModel
     public $rawBody;
     public $body;
     public $plainTextBody;
-
 }

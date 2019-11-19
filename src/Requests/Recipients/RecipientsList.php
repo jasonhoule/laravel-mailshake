@@ -24,16 +24,18 @@ class RecipientsList extends MailshakeRequest
      * of kind of problem (like a missing text replacement or an email that
      * failed to send).
      *
-     * @param int $campaignID The campaign to look in.
-     * @param RecipientFilterOptions|null $filter Criteria to filter recipients with.
-     * @param string|null $search Filters what recipients are returned.
-     * @param string|null $nextToken Fetches the next page from a previous request.
-     * @param int|null $perPage How many results to get at once, up to 100.
-     * @return Collection
+     * @param int                         $campaignID The campaign to look in.
+     * @param RecipientFilterOptions|null $filter     Criteria to filter recipients with.
+     * @param string|null                 $search     Filters what recipients are returned.
+     * @param string|null                 $nextToken  Fetches the next page from a previous request.
+     * @param int|null                    $perPage    How many results to get at once, up to 100.
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return Collection
      */
     public function get(
         int $campaignID,
@@ -44,20 +46,20 @@ class RecipientsList extends MailshakeRequest
     {
         $parameters = [
             'campaignID' => $campaignID,
-            'search' => $search,
-            'nextToken' => $nextToken,
-            'perPage' => $perPage
+            'search'     => $search,
+            'nextToken'  => $nextToken,
+            'perPage'    => $perPage,
         ];
 
-        if(!empty($filter)) {
+        if (!empty($filter)) {
             $parameters['filter'] = $filter->getOptions();
         }
 
         $response = $this->sendRequest($parameters);
 
         return collect([
-            'nextToken' =>  $response->nextToken ?? null,
-            'recipients' => $this->transformRecipients($response->results)
+            'nextToken'  => $response->nextToken ?? null,
+            'recipients' => $this->transformRecipients($response->results),
         ]);
     }
 }

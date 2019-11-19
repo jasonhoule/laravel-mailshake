@@ -4,7 +4,6 @@ namespace Jhoule\Mailshake\Filters;
 
 class PushFilters
 {
-
     /*
      * To only get events for a specific campaign.
      */
@@ -29,5 +28,4 @@ class PushFilters
      * For sent messages you can be notified only when certain types of messages are sent.
      */
     public const MESSAGE_TYPE = 'messageType';
-
 }

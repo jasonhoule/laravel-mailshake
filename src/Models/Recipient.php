@@ -4,7 +4,6 @@ namespace Jhoule\Mailshake\Models;
 
 class Recipient extends MailshakeModel
 {
-
     public $id;
     public $emailAddress;
     public $fullName;
@@ -13,5 +12,4 @@ class Recipient extends MailshakeModel
     public $created;
     public $isPaused;
     public $fields;
-
 }

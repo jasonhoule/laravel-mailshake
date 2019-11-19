@@ -7,7 +7,6 @@ use Jhoule\Mailshake\Requests\MailshakeRequest;
 
 class AddStatus extends MailshakeRequest
 {
-
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.recipients.add-status');
@@ -22,11 +21,13 @@ class AddStatus extends MailshakeRequest
      * success or failure of the import.
      *
      * @param int $statusID
-     * @return AddedRecipients
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return AddedRecipients
      */
     public function get(int $statusID) : AddedRecipients
     {
@@ -34,8 +35,7 @@ class AddStatus extends MailshakeRequest
 
         return new AddedRecipients([
             'isFinished' => $response->isFinished,
-            'problems' => $response->problems,
+            'problems'   => $response->problems,
         ]);
     }
-
 }

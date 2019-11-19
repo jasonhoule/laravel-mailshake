@@ -6,7 +6,6 @@ use Jhoule\Mailshake\Requests\MailshakeRequest;
 
 class Unsubscribe extends MailshakeRequest
 {
-
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.recipients.unsubscribe');
@@ -18,11 +17,13 @@ class Unsubscribe extends MailshakeRequest
      * Adds a list of email addresses to your unsubscribe list.
      *
      * @param array $emailAddresses A comma-separated list of email addresses to unsubscribe.
-     * @return bool Returns true if successful
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return bool Returns true if successful
      */
     public function get(array $emailAddresses) : bool
     {

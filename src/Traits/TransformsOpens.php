@@ -13,17 +13,17 @@ trait TransformsOpens
     private function transformOpens($openData) : Collection
     {
         $opens = new Collection();
-        foreach($openData as $open) {
+        foreach ($openData as $open) {
             $opens->push(new Open([
-                'id' => $open->id,
-                'actionDate' => $open->actionDate,
+                'id'          => $open->id,
+                'actionDate'  => $open->actionDate,
                 'isDuplicate' => $open->isDuplicate,
-                'recipient' => $this->getRecipient($open->recipient),
-                'campaign' => $this->getCampaign($open->campaign),
-                'parent' => new SentMessage([
-                    'id' => $open->parent->id,
-                    'type' => $open->parent->type,
-                    'message' => $this->getMessage($open->parent->message)
+                'recipient'   => $this->getRecipient($open->recipient),
+                'campaign'    => $this->getCampaign($open->campaign),
+                'parent'      => new SentMessage([
+                    'id'      => $open->parent->id,
+                    'type'    => $open->parent->type,
+                    'message' => $this->getMessage($open->parent->message),
                 ]),
             ]));
         }

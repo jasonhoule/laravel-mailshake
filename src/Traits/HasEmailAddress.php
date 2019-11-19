@@ -6,15 +6,13 @@ use Jhoule\Mailshake\Models\EmailAddress;
 
 trait HasEmailAddress
 {
-
     private function getEmailAddress($address) : EmailAddress
     {
         return new EmailAddress([
-            'address' => $address->address,
+            'address'  => $address->address,
             'fullName' => $address->fullName,
-            'first' => $address->first,
-            'last' => $address->last
+            'first'    => $address->first,
+            'last'     => $address->last,
         ]);
     }
-
 }

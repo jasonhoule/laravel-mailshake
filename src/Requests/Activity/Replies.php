@@ -26,16 +26,18 @@ class Replies extends MailshakeRequest
      * replyType because you can use this endpoint to look at bounces, out-of-office
      * replies, etc.
      *
-     * @param string|null $replyType Filter to only reply, bounce, out-of-office, unsubscribe or delay-notification replies.
-     * @param int|null $campaignID Restrict to a single campaign.
+     * @param string|null $replyType             Filter to only reply, bounce, out-of-office, unsubscribe or delay-notification replies.
+     * @param int|null    $campaignID            Restrict to a single campaign.
      * @param string|null $recipientEmailAddress Limit to specific recipients.
-     * @param string|null $nextToken Fetches the next page from a previous request.
-     * @param int $perPage How many results to get at once, up to 100.
-     * @return Collection
+     * @param string|null $nextToken             Fetches the next page from a previous request.
+     * @param int         $perPage               How many results to get at once, up to 100.
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\NotFound
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
+     *
+     * @return Collection
      */
     public function get(
         string $replyType = null,
@@ -43,37 +45,35 @@ class Replies extends MailshakeRequest
         string $recipientEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection
-    {
+    ) : Collection {
         $response = $this->sendRequest([
-            'replyType' => $replyType,
-            'campaignID' => $campaignID,
+            'replyType'             => $replyType,
+            'campaignID'            => $campaignID,
             'recipientEmailAddress' => $recipientEmailAddress,
-            'nextToken' => $nextToken,
-            'perPage' => $perPage
+            'nextToken'             => $nextToken,
+            'perPage'               => $perPage,
         ]);
 
         $replies = new Collection();
-        foreach($response->results as $each) {
+        foreach ($response->results as $each) {
             $replies->push(new Reply([
-                'id' => $each->id,
-                'actionDate' => $each->actionDate,
-                'recipient' => $this->getRecipient($each->recipient),
-                'campaign' => $this->getCampaign($each->campaign),
-                'type' => $each->type,
-                'parent' => $this->getSentMessage($each->parent),
-                'from' => $this->getEmailAddress($each->from),
-                'subject' => $each->subject,
-                'externalID' => $each->externalID,
-                'externalRawMessageID' => $each->externalRawMessageID,
+                'id'                     => $each->id,
+                'actionDate'             => $each->actionDate,
+                'recipient'              => $this->getRecipient($each->recipient),
+                'campaign'               => $this->getCampaign($each->campaign),
+                'type'                   => $each->type,
+                'parent'                 => $this->getSentMessage($each->parent),
+                'from'                   => $this->getEmailAddress($each->from),
+                'subject'                => $each->subject,
+                'externalID'             => $each->externalID,
+                'externalRawMessageID'   => $each->externalRawMessageID,
                 'externalConversationID' => $each->externalConversationID,
-                'rawBody' => $each->rawBody,
-                'body' => $each->body,
-                'plainTextBody' => $each->plainTextBody
+                'rawBody'                => $each->rawBody,
+                'body'                   => $each->body,
+                'plainTextBody'          => $each->plainTextBody,
             ]));
         }
 
         return collect(['nextToken' => $response->nextToken, 'replies' => $replies]);
     }
-
 }

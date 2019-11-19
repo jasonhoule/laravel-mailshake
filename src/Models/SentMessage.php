@@ -4,7 +4,6 @@ namespace Jhoule\Mailshake\Models;
 
 class SentMessage extends MailshakeModel
 {
-
     public $id;
     public $actionDate;
     public $recipient;
@@ -20,5 +19,4 @@ class SentMessage extends MailshakeModel
     public $rawBody;
     public $body;
     public $plainTextBody;
-
 }

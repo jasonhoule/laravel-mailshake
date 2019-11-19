@@ -2,8 +2,8 @@
 
 namespace Jhoule\Mailshake\Requests\Campaigns;
 
-use Jhoule\Mailshake\Requests\MailshakeRequest;
 use Jhoule\Mailshake\Models\Campaign;
+use Jhoule\Mailshake\Requests\MailshakeRequest;
 use Jhoule\Mailshake\Traits\TransformsMessages;
 use Jhoule\Mailshake\Traits\TransformsSender;
 
@@ -24,34 +24,35 @@ class Create extends MailshakeRequest
      *
      * @param string|null $title
      * @param string|null $senderID
-     * @return Campaign
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
      * @throws \Jhoule\Mailshake\Errors\NotFound
+     *
+     * @return Campaign
      */
     public function get(string $title = null, string $senderID = null) : Campaign
     {
         $response = $this->sendRequest(['title' => $title, 'senderID' => $senderID]);
 
-        $campaign =  new Campaign([
-            'id' => $response->id,
-            'title' => $response->title,
-            'created' => $response->created,
+        $campaign = new Campaign([
+            'id'       => $response->id,
+            'title'    => $response->title,
+            'created'  => $response->created,
             'archived' => $response->archived,
             'isPaused' => $response->isPaused,
-            'url' => $response->url,
+            'url'      => $response->url,
         ]);
 
-        if(property_exists($response, 'messages')) {
+        if (property_exists($response, 'messages')) {
             $campaign->messages = $this->transformMessages($response->messages);
         }
 
-        if(property_exists($response, 'sender')) {
+        if (property_exists($response, 'sender')) {
             $campaign->sender = $this->transformSender($response->sender);
         }
 
         return $campaign;
     }
-
 }

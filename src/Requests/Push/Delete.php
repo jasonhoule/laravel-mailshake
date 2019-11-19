@@ -6,7 +6,6 @@ use Jhoule\Mailshake\Requests\MailshakeRequest;
 
 class Delete extends MailshakeRequest
 {
-
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.push.delete');
@@ -20,16 +19,18 @@ class Delete extends MailshakeRequest
      * your push.
      *
      * @param string $targetUrl The unique target url of a push.
-     * @return bool
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jhoule\Mailshake\Errors\InternalError
      * @throws \Jhoule\Mailshake\Errors\MissingParameter
      * @throws \Jhoule\Mailshake\Errors\NotFound
+     *
+     * @return bool
      */
     public function get(string $targetUrl) : bool
     {
         $this->sendRequest(['targetUrl' => $targetUrl]);
+
         return true;
     }
-
 }

@@ -7,27 +7,26 @@ use Jhoule\Mailshake\Models\Message;
 
 trait TransformsMessages
 {
-
     /**
-     * Transform the message array to a collection of Message objects
+     * Transform the message array to a collection of Message objects.
      *
      * @param array $campaignMessages
+     *
      * @return Collection
      */
     private function transformMessages(array $campaignMessages) : Collection
     {
         $messages = [];
-        foreach($campaignMessages as $each) {
+        foreach ($campaignMessages as $each) {
             $messages[] = new Message([
-                'id' => $each->id,
-                'type' => $each->type,
-                'subject' => $each->subject,
+                'id'        => $each->id,
+                'type'      => $each->type,
+                'subject'   => $each->subject,
                 'replyToID' => $each->replyToID,
-                'isPaused' => $each->isPaused,
+                'isPaused'  => $each->isPaused,
             ]);
         }
 
         return collect($messages);
     }
-
 }
