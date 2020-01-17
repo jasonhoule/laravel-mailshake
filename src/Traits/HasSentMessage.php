@@ -8,7 +8,7 @@ trait HasSentMessage
 {
     use HasMessage;
 
-    private function getSentMessage($message) : SentMessage
+    private function getSentMessage($message): SentMessage
     {
         return new SentMessage([
             'id'      => $message->id,

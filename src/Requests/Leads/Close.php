@@ -36,7 +36,7 @@ class Close extends MailshakeRequest
         int $recipientID = null,
         int $leadID = null,
         string $status = null
-    ) : bool {
+    ): bool {
         $this->sendRequest([
             'campaignID'   => $campaignID,
             'emailAddress' => $emailAddress,

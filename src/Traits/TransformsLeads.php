@@ -7,7 +7,7 @@ use Jhoule\Mailshake\Models\Lead;
 
 trait TransformsLeads
 {
-    private function transformLeads(array $results) : Collection
+    private function transformLeads(array $results): Collection
     {
         $leads = new Collection();
         foreach ($results as $lead) {

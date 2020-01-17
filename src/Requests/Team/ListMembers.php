@@ -29,7 +29,7 @@ class ListMembers extends MailshakeRequest
      *
      * @return Collection
      */
-    public function get(string $search = null, string $nextToken = null, int $perPage = 100) : Collection
+    public function get(string $search = null, string $nextToken = null, int $perPage = 100): Collection
     {
         $response = $this->sendRequest([
             'search'    => $search,

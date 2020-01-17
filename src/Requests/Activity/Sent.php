@@ -45,7 +45,7 @@ class Sent extends MailshakeRequest
         string $recipientEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $response = $this->sendRequest([
             'messageType'           => $messageType,
             'campaignMessageType'   => $campaignMessageType,

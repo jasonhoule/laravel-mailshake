@@ -14,7 +14,7 @@ trait TransformsMessages
      *
      * @return Collection
      */
-    private function transformMessages(array $campaignMessages) : Collection
+    private function transformMessages(array $campaignMessages): Collection
     {
         $messages = [];
         foreach ($campaignMessages as $each) {

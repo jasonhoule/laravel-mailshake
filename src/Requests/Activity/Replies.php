@@ -12,8 +12,10 @@ use Jhoule\Mailshake\Traits\HasSentMessage;
 
 class Replies extends MailshakeRequest
 {
-    use HasRecipient, HasCampaign, HasSentMessage, HasEmailAddress;
-
+    use HasRecipient;
+    use HasCampaign;
+    use HasSentMessage;
+    use HasEmailAddress;
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.activity.replies');
@@ -45,7 +47,7 @@ class Replies extends MailshakeRequest
         string $recipientEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $response = $this->sendRequest([
             'replyType'             => $replyType,
             'campaignID'            => $campaignID,

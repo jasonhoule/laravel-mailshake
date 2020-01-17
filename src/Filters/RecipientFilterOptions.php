@@ -15,7 +15,7 @@ class RecipientFilterOptions
         $this->campaignMessageID = $campaignMessageID;
     }
 
-    public function getOptions() : array
+    public function getOptions(): array
     {
         return [
             'action'            => $this->action,

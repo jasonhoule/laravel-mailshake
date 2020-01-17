@@ -32,7 +32,7 @@ class MailshakeRequest
      *
      * @return object
      */
-    public function sendRequest(array $parameters = []) : object
+    public function sendRequest(array $parameters = []): object
     {
         $client = new Client();
 

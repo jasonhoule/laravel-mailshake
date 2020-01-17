@@ -49,7 +49,7 @@ class Recipients extends Facade
         bool $truncateExtraFields = false,
         string $listOfEmails = null,
         array $addresses = null,
-        array $csvData = null) : AddRecipientRequest
+        array $csvData = null): AddRecipientRequest
     {
         $request = new Add();
 
@@ -70,7 +70,7 @@ class Recipients extends Facade
      *
      * @return AddedRecipients
      */
-    public static function addStatus(int $statusID) : AddedRecipients
+    public static function addStatus(int $statusID): AddedRecipients
     {
         $request = new AddStatus();
 
@@ -92,7 +92,7 @@ class Recipients extends Facade
      *
      * @return Recipient
      */
-    public static function get(int $recipientID = null, int $campaignID = null, string $emailAddress = null) : Recipient
+    public static function get(int $recipientID = null, int $campaignID = null, string $emailAddress = null): Recipient
     {
         $request = new Get();
 
@@ -123,7 +123,7 @@ class Recipients extends Facade
         RecipientFilterOptions $filter = null,
         string $search = null,
         string $nextToken = null,
-        int $perPage = null) : Collection
+        int $perPage = null): Collection
     {
         $request = new RecipientsList();
 
@@ -146,7 +146,7 @@ class Recipients extends Facade
      *
      * @return Recipient
      */
-    public static function pause(int $campaignID, string $emailAddress) : Recipient
+    public static function pause(int $campaignID, string $emailAddress): Recipient
     {
         $request = new Pause();
 
@@ -170,7 +170,7 @@ class Recipients extends Facade
      *
      * @return Recipient
      */
-    public static function unpause(int $campaignID, string $emailAddress) : Recipient
+    public static function unpause(int $campaignID, string $emailAddress): Recipient
     {
         $request = new Unpause();
 
@@ -189,7 +189,7 @@ class Recipients extends Facade
      *
      * @return bool Returns true if successful
      */
-    public static function unsubscribe(array $emailAddresses) : bool
+    public static function unsubscribe(array $emailAddresses): bool
     {
         $request = new Unsubscribe();
 

@@ -9,8 +9,8 @@ use Jhoule\Mailshake\Traits\HasRecipient;
 
 class Get extends MailshakeRequest
 {
-    use HasRecipient, HasCampaign;
-
+    use HasRecipient;
+    use HasCampaign;
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.leads.get');
@@ -38,7 +38,7 @@ class Get extends MailshakeRequest
         int $recipientID = null,
         int $campaignID = null,
         string $emailAddress = null
-    ) : Lead {
+    ): Lead {
         $response = $this->sendRequest([
             'leadID'       => $leadID,
             'recipientID'  => $recipientID,

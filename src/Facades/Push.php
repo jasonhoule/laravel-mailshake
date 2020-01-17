@@ -21,14 +21,14 @@ class Push
      *
      * @return int
      */
-    public static function create(string $targetUrl, string $event, array $filter = null) : int
+    public static function create(string $targetUrl, string $event, array $filter = null): int
     {
         $request = new Create();
 
         return $request->get($targetUrl, $event, $filter);
     }
 
-    public static function delete(string $targetUrl) : bool
+    public static function delete(string $targetUrl): bool
     {
         $request = new Delete();
 

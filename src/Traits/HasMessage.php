@@ -6,7 +6,7 @@ use Jhoule\Mailshake\Models\Message;
 
 trait HasMessage
 {
-    private function getMessage($messageData) : Message
+    private function getMessage($messageData): Message
     {
         return new Message([
             'id'        => $messageData->id,

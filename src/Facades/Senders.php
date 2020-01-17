@@ -22,7 +22,7 @@ class Senders extends Facade
      *
      * @return Collection
      */
-    public static function list(string $search = null, string $nextToken = null, int $perPage = 100) : Collection
+    public static function list(string $search = null, string $nextToken = null, int $perPage = 100): Collection
     {
         $request = new SendersList();
 

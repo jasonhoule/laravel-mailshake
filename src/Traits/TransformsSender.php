@@ -13,7 +13,7 @@ trait TransformsSender
      *
      * @return Sender
      */
-    private function transformSender($senderData) : Sender
+    private function transformSender($senderData): Sender
     {
         return new Sender([
             'id'           => $senderData->id,

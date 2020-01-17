@@ -37,7 +37,7 @@ class Activity extends Facade
         string $recipientEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $request = new Clicks();
 
         return $request->get($campaignID, $excludeDuplicates, $matchUrl, $recipientEmailAddress, $nextToken, $perPage);
@@ -67,7 +67,7 @@ class Activity extends Facade
         string $assignedToEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $request = new CreatedLeads();
 
         return $request->get($campaignID, $recipientEmailAddress, $assignedToEmailAddress, $nextToken, $perPage);
@@ -97,7 +97,7 @@ class Activity extends Facade
         string $assignedToEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $request = new LeadStatusChanges();
 
         return $request->get(
@@ -133,7 +133,7 @@ class Activity extends Facade
         string $recipientEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $request = new Opens();
 
         return $request->get(
@@ -170,7 +170,7 @@ class Activity extends Facade
         string $recipientEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $request = new Replies();
 
         return $request->get(
@@ -210,7 +210,7 @@ class Activity extends Facade
         string $recipientEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $request = new Sent();
 
         return $request->get(

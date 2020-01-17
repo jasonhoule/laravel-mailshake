@@ -29,7 +29,7 @@ class Get extends MailshakeRequest
      *
      * @return Recipient
      */
-    public function get(int $recipientID = null, int $campaignID = null, string $emailAddress = null) : Recipient
+    public function get(int $recipientID = null, int $campaignID = null, string $emailAddress = null): Recipient
     {
         $response = $this->sendRequest([
             'recipientID'  => $recipientID,

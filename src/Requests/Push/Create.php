@@ -27,7 +27,7 @@ class Create extends MailshakeRequest
      *
      * @return int
      */
-    public function get(string $targetUrl, string $event, array $filter = null) : int
+    public function get(string $targetUrl, string $event, array $filter = null): int
     {
         $response = $this->sendRequest([
             'targetUrl' => $targetUrl,

@@ -26,7 +26,7 @@ class Team extends Facade
         string $search = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $request = new ListMembers();
 
         return $request->get($search, $nextToken, $perPage);
