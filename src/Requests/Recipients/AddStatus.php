@@ -29,7 +29,7 @@ class AddStatus extends MailshakeRequest
      *
      * @return AddedRecipients
      */
-    public function get(int $statusID) : AddedRecipients
+    public function get(int $statusID): AddedRecipients
     {
         $response = $this->sendRequest(['statusID' => $statusID]);
 

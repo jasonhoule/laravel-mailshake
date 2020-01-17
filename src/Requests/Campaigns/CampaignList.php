@@ -11,8 +11,8 @@ use Jhoule\Mailshake\Traits\TransformsSender;
 
 class CampaignList extends MailshakeRequest
 {
-    use TransformsMessages, TransformsSender;
-
+    use TransformsMessages;
+    use TransformsSender;
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.campaign.list');
@@ -35,7 +35,7 @@ class CampaignList extends MailshakeRequest
      *
      * @return Collection
      */
-    public function get(string $search = null, string $nextToken = null, int $perPage = null) : Collection
+    public function get(string $search = null, string $nextToken = null, int $perPage = null): Collection
     {
         $parameters = ['search' => $search, 'nextToken' => $nextToken, 'perPage' => $perPage];
         Log::debug('Campaign list paramters: '.print_r($parameters, true));

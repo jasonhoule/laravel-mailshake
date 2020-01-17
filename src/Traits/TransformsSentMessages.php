@@ -8,9 +8,10 @@ use Jhoule\Mailshake\Models\SentMessage;
 
 trait TransformsSentMessages
 {
-    use HasRecipient, HasCampaign, HasMessage;
-
-    private function transformSentMessages(array $messages) : Collection
+    use HasRecipient;
+    use HasCampaign;
+    use HasMessage;
+    private function transformSentMessages(array $messages): Collection
     {
         $sentMessages = new Collection();
         foreach ($messages as $message) {
@@ -36,7 +37,7 @@ trait TransformsSentMessages
         return $sentMessages;
     }
 
-    private function getEmailAddress($fromData) : EmailAddress
+    private function getEmailAddress($fromData): EmailAddress
     {
         return new EmailAddress([
             'address'  => $fromData->address,
@@ -46,7 +47,7 @@ trait TransformsSentMessages
         ]);
     }
 
-    private function getTo($toData) : Collection
+    private function getTo($toData): Collection
     {
         $to = new Collection();
         foreach ($toData as $each) {

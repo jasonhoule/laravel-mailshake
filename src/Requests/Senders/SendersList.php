@@ -35,7 +35,7 @@ class SendersList extends MailshakeRequest
         string $search = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $response = $this->sendRequest([
             'search'    => $search,
             'nextToken' => $nextToken,

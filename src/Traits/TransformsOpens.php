@@ -8,9 +8,10 @@ use Jhoule\Mailshake\Models\SentMessage;
 
 trait TransformsOpens
 {
-    use HasRecipient, HasCampaign, HasMessage;
-
-    private function transformOpens($openData) : Collection
+    use HasRecipient;
+    use HasCampaign;
+    use HasMessage;
+    private function transformOpens($openData): Collection
     {
         $opens = new Collection();
         foreach ($openData as $open) {

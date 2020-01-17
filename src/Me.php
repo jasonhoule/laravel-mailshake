@@ -18,7 +18,7 @@ class Me extends MailshakeRequest
      *
      * @return User
      */
-    public function get() : User
+    public function get(): User
     {
         $response = $this->sendRequest()->user;
 

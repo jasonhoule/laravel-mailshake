@@ -7,7 +7,7 @@ use Jhoule\Mailshake\Models\Recipient;
 
 trait TransformsRecipients
 {
-    private function transformRecipients(array $recipients) : Collection
+    private function transformRecipients(array $recipients): Collection
     {
         $campaignRecipients = new Collection();
         foreach ($recipients as $recipient) {

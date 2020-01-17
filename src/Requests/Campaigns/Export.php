@@ -28,7 +28,7 @@ class Export extends MailshakeRequest
      *
      * @return CampaignExportRequest
      */
-    public function get(int $campaignID, string $exportType, string $timezone = null) : CampaignExportRequest
+    public function get(int $campaignID, string $exportType, string $timezone = null): CampaignExportRequest
     {
         $response = $this->sendRequest([
             'campaignID' => $campaignID,

@@ -11,8 +11,8 @@ use Jhoule\Mailshake\Traits\HasRecipient;
 
 class Clicks extends MailshakeRequest
 {
-    use HasRecipient, HasCampaign;
-
+    use HasRecipient;
+    use HasCampaign;
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.activity.clicks');
@@ -44,7 +44,7 @@ class Clicks extends MailshakeRequest
         string $recipientEmailAddress = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $response = $this->sendRequest([
             $campaignID,
             $excludeDuplicates,

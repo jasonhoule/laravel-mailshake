@@ -25,7 +25,7 @@ class Unpause extends MailshakeRequest
      *
      * @return bool
      */
-    public function get(int $campaignID) : bool
+    public function get(int $campaignID): bool
     {
         $this->sendRequest(['campaignID' => $campaignID]);
 

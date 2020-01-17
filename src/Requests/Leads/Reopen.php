@@ -34,7 +34,7 @@ class Reopen extends MailshakeRequest
         string $emailAddress = null,
         int $recipientID = null,
         int $leadID = null
-    ) : LeadStatus {
+    ): LeadStatus {
         $response = $this->sendRequest([
             'campaignID'   => $campaignID,
             'emailAddress' => $emailAddress,

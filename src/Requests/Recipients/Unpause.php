@@ -31,7 +31,7 @@ class Unpause extends MailshakeRequest
      *
      * @return Recipient
      */
-    public function get(int $campaignID, string $emailAddress) : Recipient
+    public function get(int $campaignID, string $emailAddress): Recipient
     {
         $response = $this->sendRequest([
             'campaignID'   => $campaignID,

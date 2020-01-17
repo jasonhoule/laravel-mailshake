@@ -6,7 +6,7 @@ use Jhoule\Mailshake\Models\Recipient;
 
 trait HasRecipient
 {
-    private function getRecipient($recipientData) : Recipient
+    private function getRecipient($recipientData): Recipient
     {
         return new Recipient([
             'id'           => $recipientData->id,

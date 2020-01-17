@@ -9,8 +9,8 @@ use Jhoule\Mailshake\Traits\TransformsSender;
 
 class Get extends MailshakeRequest
 {
-    use TransformsMessages, TransformsSender;
-
+    use TransformsMessages;
+    use TransformsSender;
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.campaign.get');
@@ -30,7 +30,7 @@ class Get extends MailshakeRequest
      *
      * @return Campaign
      */
-    public function get(int $campaignID) : Campaign
+    public function get(int $campaignID): Campaign
     {
         $response = $this->sendRequest(['campaignID' => $campaignID]);
 

@@ -25,7 +25,7 @@ class Unsubscribe extends MailshakeRequest
      *
      * @return bool Returns true if successful
      */
-    public function get(array $emailAddresses) : bool
+    public function get(array $emailAddresses): bool
     {
         $this->sendRequest(['emailAddresses' => $emailAddresses]);
 

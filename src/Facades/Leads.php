@@ -39,7 +39,7 @@ class Leads extends Facade
         int $recipientID = null,
         int $leadID = null,
         string $status = null
-    ) : bool {
+    ): bool {
         $request = new Close();
 
         return $request->get($campaignID, $emailAddress, $recipientID, $leadID, $status);
@@ -66,7 +66,7 @@ class Leads extends Facade
         int $campaignID = null,
         array $emailAddresses = null,
         int $recipientIDs = null
-    ) : CreatedLeads {
+    ): CreatedLeads {
         $request = new Create();
 
         return $request->get($campaignID, $emailAddresses, $recipientIDs);
@@ -92,7 +92,7 @@ class Leads extends Facade
         int $recipientID = null,
         int $campaignID = null,
         string $emailAddress = null
-    ) : Lead {
+    ): Lead {
         $request = new Get();
 
         return $request->get($leadID, $recipientID, $campaignID, $emailAddress);
@@ -120,7 +120,7 @@ class Leads extends Facade
         string $emailAddress = null,
         int $recipientID = null,
         int $leadID = null
-    ) : LeadStatus {
+    ): LeadStatus {
         $request = new Ignore();
 
         return $request->get($campaignID, $emailAddress, $recipientID, $leadID);
@@ -150,7 +150,7 @@ class Leads extends Facade
         string $search = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $request = new LeadsList();
 
         return $request->get($campaignID, $status, $assignedToEmailAddress, $search, $nextToken, $perPage);
@@ -176,7 +176,7 @@ class Leads extends Facade
         string $emailAddress = null,
         int $recipientID = null,
         int $leadID = null
-    ) : LeadStatus {
+    ): LeadStatus {
         $request = new Reopen();
 
         return $request->get($campaignID, $emailAddress, $recipientID, $leadID);

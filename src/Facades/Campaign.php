@@ -31,7 +31,7 @@ class Campaign extends Facade
      *
      * @return CampaignModel
      */
-    public static function create(string $title = null, string $senderID = null) : CampaignModel
+    public static function create(string $title = null, string $senderID = null): CampaignModel
     {
         $campaign = new Create();
 
@@ -52,7 +52,7 @@ class Campaign extends Facade
      *
      * @return CampaignExportRequest
      */
-    public static function export(int $campaignID, string $exportType, string $timezone = null) : CampaignExportRequest
+    public static function export(int $campaignID, string $exportType, string $timezone = null): CampaignExportRequest
     {
         $export = new Export();
 
@@ -73,7 +73,7 @@ class Campaign extends Facade
      *
      * @return CampaignExport
      */
-    public static function exportStatus(int $statusID) : CampaignExport
+    public static function exportStatus(int $statusID): CampaignExport
     {
         $status = new ExportStatus();
 
@@ -92,7 +92,7 @@ class Campaign extends Facade
      *
      * @return CampaignModel
      */
-    public static function get(int $campaignID) : CampaignModel
+    public static function get(int $campaignID): CampaignModel
     {
         $campaign = new Get();
 
@@ -112,7 +112,7 @@ class Campaign extends Facade
      *
      * @return Collection
      */
-    public static function list(string $search = null, string $nextToken = null, int $perPage = null) : Collection
+    public static function list(string $search = null, string $nextToken = null, int $perPage = null): Collection
     {
         $list = new CampaignList();
 
@@ -131,7 +131,7 @@ class Campaign extends Facade
      *
      * @return bool
      */
-    public static function pause(int $campaignID) : bool
+    public static function pause(int $campaignID): bool
     {
         $pause = new Pause();
 
@@ -151,7 +151,7 @@ class Campaign extends Facade
      *
      * @return bool
      */
-    public static function unpause(int $campaignID) : bool
+    public static function unpause(int $campaignID): bool
     {
         $unpause = new Unpause();
 

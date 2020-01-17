@@ -29,7 +29,7 @@ class ExportStatus extends MailshakeRequest
      *
      * @return CampaignExport
      */
-    public function get(int $statusID) : CampaignExport
+    public function get(int $statusID): CampaignExport
     {
         $response = $this->sendRequest(['statusID' => $statusID]);
 

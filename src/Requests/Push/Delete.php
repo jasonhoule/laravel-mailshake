@@ -27,7 +27,7 @@ class Delete extends MailshakeRequest
      *
      * @return bool
      */
-    public function get(string $targetUrl) : bool
+    public function get(string $targetUrl): bool
     {
         $this->sendRequest(['targetUrl' => $targetUrl]);
 

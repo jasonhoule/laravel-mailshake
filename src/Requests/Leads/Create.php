@@ -38,7 +38,7 @@ class Create extends MailshakeRequest
         int $campaignID = null,
         array $emailAddresses = null,
         int $recipientIDs = null
-    ) : CreatedLeads {
+    ): CreatedLeads {
         $response = $this->sendRequest([
             'campaignID'     => $campaignID,
             'emailAddresses' => $emailAddresses,

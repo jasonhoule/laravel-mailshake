@@ -10,8 +10,8 @@ use Jhoule\Mailshake\Traits\HasRecipient;
 
 class LeadsList extends MailshakeRequest
 {
-    use HasRecipient, HasCampaign;
-
+    use HasRecipient;
+    use HasCampaign;
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.leads.list');
@@ -44,7 +44,7 @@ class LeadsList extends MailshakeRequest
         string $search = null,
         string $nextToken = null,
         int $perPage = 100
-    ) : Collection {
+    ): Collection {
         $response = $this->sendRequest([
             'campaignID'             => $campaignID,
             'status'                 => $status,
