@@ -10,14 +10,16 @@ trait HasSentMessage
 
     private function getSentMessage($message): SentMessage
     {
+        $sentMessage = new SentMessage();
+
         if (!empty($message)) {
-            return new SentMessage([
+            $sentMessage->fill([
                 'id'      => $message->id,
                 'type'    => $message->type,
                 'message' => $this->getMessage($message->message),
             ]);
         }
 
-        return null;
+        return $sentMessage;
     }
 }
