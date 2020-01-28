@@ -64,7 +64,7 @@ class Replies extends MailshakeRequest
                 'recipient'              => $this->getRecipient($each->recipient),
                 'campaign'               => $this->getCampaign($each->campaign),
                 'type'                   => $each->type,
-                'parent'                 => $this->getSentMessage($each->parent),
+                'parent'                 => $this->getSentMessage($each->parent ?? null),
                 'from'                   => $this->getEmailAddress($each->from),
                 'subject'                => $each->subject,
                 'externalID'             => $each->externalID,
