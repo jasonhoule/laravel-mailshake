@@ -12,6 +12,7 @@ class LeadsList extends MailshakeRequest
 {
     use HasRecipient;
     use HasCampaign;
+
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.leads.list');

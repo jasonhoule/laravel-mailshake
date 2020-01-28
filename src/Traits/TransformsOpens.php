@@ -11,6 +11,7 @@ trait TransformsOpens
     use HasRecipient;
     use HasCampaign;
     use HasMessage;
+
     private function transformOpens($openData): Collection
     {
         $opens = new Collection();
