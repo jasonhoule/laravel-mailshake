@@ -16,6 +16,7 @@ class Replies extends MailshakeRequest
     use HasCampaign;
     use HasSentMessage;
     use HasEmailAddress;
+
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.activity.replies');

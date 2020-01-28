@@ -10,7 +10,7 @@ trait HasSentMessage
 
     private function getSentMessage($message): SentMessage
     {
-        if(!empty($message)) {
+        if (!empty($message)) {
             return new SentMessage([
                 'id'      => $message->id,
                 'type'    => $message->type,
