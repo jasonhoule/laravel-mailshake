@@ -11,6 +11,7 @@ trait TransformsSentMessages
     use HasRecipient;
     use HasCampaign;
     use HasMessage;
+
     private function transformSentMessages(array $messages): Collection
     {
         $sentMessages = new Collection();

@@ -13,6 +13,7 @@ class CampaignList extends MailshakeRequest
 {
     use TransformsMessages;
     use TransformsSender;
+
     public function __construct()
     {
         $this->endpoint = config('mailshake.endpoints.campaign.list');
