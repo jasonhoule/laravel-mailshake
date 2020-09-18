@@ -42,7 +42,8 @@ class RecipientsList extends MailshakeRequest
         RecipientFilterOptions $filter = null,
         string $search = null,
         string $nextToken = null,
-        int $perPage = null): Collection
+        int $perPage = null
+    ): Collection
     {
         $parameters = [
             'campaignID' => $campaignID,

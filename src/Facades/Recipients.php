@@ -49,7 +49,8 @@ class Recipients extends Facade
         bool $truncateExtraFields = false,
         string $listOfEmails = null,
         array $addresses = null,
-        array $csvData = null): AddRecipientRequest
+        array $csvData = null
+    ): AddRecipientRequest
     {
         $request = new Add();
 
@@ -123,7 +124,8 @@ class Recipients extends Facade
         RecipientFilterOptions $filter = null,
         string $search = null,
         string $nextToken = null,
-        int $perPage = null): Collection
+        int $perPage = null
+    ): Collection
     {
         $request = new RecipientsList();
 
