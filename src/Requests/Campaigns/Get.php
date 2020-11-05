@@ -39,10 +39,10 @@ class Get extends MailshakeRequest
             'id'       => $response->id,
             'title'    => $response->title,
             'created'  => $response->created,
-            'archived' => $response->archived,
+            'isArchived' => $response->isArchived,
             'isPaused' => $response->isPaused,
             'messages' => $this->transformMessages($response->messages),
-            'sender'   => $this->transformSender($response->sender),
+            'sender'   => isset($response->sender) ? $this->transformSender($response->sender) : null,
             'url'      => $response->url,
         ]);
     }

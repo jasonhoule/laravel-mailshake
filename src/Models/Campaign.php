@@ -7,7 +7,7 @@ class Campaign extends MailshakeModel
     public $id;
     public $title;
     public $created;
-    public $archived;
+    public $isArchived;
     public $isPaused;
     public $messages;
     public $sender;

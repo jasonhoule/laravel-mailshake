@@ -41,7 +41,7 @@ class Create extends MailshakeRequest
             'id'       => $response->id,
             'title'    => $response->title,
             'created'  => $response->created,
-            'archived' => $response->archived,
+            'isArchived' => $response->isArchived,
             'isPaused' => $response->isPaused,
             'url'      => $response->url,
         ]);
