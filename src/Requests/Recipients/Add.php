@@ -46,8 +46,7 @@ class Add extends MailshakeRequest
         string $listOfEmails = null,
         array $addresses = null,
         array $csvData = null
-    ): AddRecipientRequest
-    {
+    ): AddRecipientRequest {
         $response = $this->sendRequest([
             'campaignID'          => $campaignID,
             'addAsNewList'        => $addAsNewList,

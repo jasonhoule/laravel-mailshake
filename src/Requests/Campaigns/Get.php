@@ -36,14 +36,14 @@ class Get extends MailshakeRequest
         $response = $this->sendRequest(['campaignID' => $campaignID]);
 
         return new Campaign([
-            'id'       => $response->id,
-            'title'    => $response->title,
-            'created'  => $response->created,
+            'id'         => $response->id,
+            'title'      => $response->title,
+            'created'    => $response->created,
             'isArchived' => $response->isArchived,
-            'isPaused' => $response->isPaused,
-            'messages' => $this->transformMessages($response->messages),
-            'sender'   => isset($response->sender) ? $this->transformSender($response->sender) : null,
-            'url'      => $response->url,
+            'isPaused'   => $response->isPaused,
+            'messages'   => $this->transformMessages($response->messages),
+            'sender'     => isset($response->sender) ? $this->transformSender($response->sender) : null,
+            'url'        => $response->url,
         ]);
     }
 }

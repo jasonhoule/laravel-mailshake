@@ -38,12 +38,12 @@ class Create extends MailshakeRequest
         $response = $this->sendRequest(['title' => $title, 'senderID' => $senderID]);
 
         $campaign = new Campaign([
-            'id'       => $response->id,
-            'title'    => $response->title,
-            'created'  => $response->created,
+            'id'         => $response->id,
+            'title'      => $response->title,
+            'created'    => $response->created,
             'isArchived' => $response->isArchived,
-            'isPaused' => $response->isPaused,
-            'url'      => $response->url,
+            'isPaused'   => $response->isPaused,
+            'url'        => $response->url,
         ]);
 
         if (property_exists($response, 'messages')) {

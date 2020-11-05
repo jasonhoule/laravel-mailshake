@@ -43,8 +43,7 @@ class RecipientsList extends MailshakeRequest
         string $search = null,
         string $nextToken = null,
         int $perPage = null
-    ): Collection
-    {
+    ): Collection {
         $parameters = [
             'campaignID' => $campaignID,
             'search'     => $search,
