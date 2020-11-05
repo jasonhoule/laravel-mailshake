@@ -50,8 +50,7 @@ class Recipients extends Facade
         string $listOfEmails = null,
         array $addresses = null,
         array $csvData = null
-    ): AddRecipientRequest
-    {
+    ): AddRecipientRequest {
         $request = new Add();
 
         return $request->get($campaignID, $addAsNewList, $truncateExtraFields, $listOfEmails, $addresses, $csvData);
@@ -125,8 +124,7 @@ class Recipients extends Facade
         string $search = null,
         string $nextToken = null,
         int $perPage = null
-    ): Collection
-    {
+    ): Collection {
         $request = new RecipientsList();
 
         return $request->get($campaignID, $filter, $search, $nextToken, $perPage);
